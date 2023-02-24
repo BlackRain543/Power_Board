@@ -1,13 +1,13 @@
 # Target labels
  bootloader
 # Source files and their labels
-D:/espidf/hello_world/build/CMakeFiles/bootloader
-D:/espidf/hello_world/build/CMakeFiles/bootloader.rule
-D:/espidf/hello_world/build/CMakeFiles/bootloader-complete.rule
-D:/espidf/hello_world/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
-D:/espidf/hello_world/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
-D:/espidf/hello_world/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
-D:/espidf/hello_world/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
-D:/espidf/hello_world/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
-D:/espidf/hello_world/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
-D:/espidf/hello_world/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule
+D:/espidf/Power_Board/build/CMakeFiles/bootloader
+D:/espidf/Power_Board/build/CMakeFiles/bootloader.rule
+D:/espidf/Power_Board/build/CMakeFiles/bootloader-complete.rule
+D:/espidf/Power_Board/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+D:/espidf/Power_Board/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+D:/espidf/Power_Board/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+D:/espidf/Power_Board/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+D:/espidf/Power_Board/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+D:/espidf/Power_Board/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+D:/espidf/Power_Board/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

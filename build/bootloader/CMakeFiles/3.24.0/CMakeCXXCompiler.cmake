@@ -1,4 +1,4 @@
-set(CMAKE_CXX_COMPILER "F:/Espressif/Tool/tools/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-g++.exe")
+set(CMAKE_CXX_COMPILER "F:/Espressif/Tool/tools/riscv32-esp-elf/esp-2022r1-11.2.0/riscv32-esp-elf/bin/riscv32-esp-elf-g++.exe")
 set(CMAKE_CXX_COMPILER_ARG1 "")
 set(CMAKE_CXX_COMPILER_ID "GNU")
 set(CMAKE_CXX_COMPILER_VERSION "11.2.0")
@@ -22,11 +22,11 @@ set(CMAKE_CXX_SIMULATE_VERSION "")
 
 
 
-set(CMAKE_AR "F:/Espressif/Tool/tools/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-ar.exe")
-set(CMAKE_CXX_COMPILER_AR "F:/Espressif/Tool/tools/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-gcc-ar.exe")
-set(CMAKE_RANLIB "F:/Espressif/Tool/tools/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-ranlib.exe")
-set(CMAKE_CXX_COMPILER_RANLIB "F:/Espressif/Tool/tools/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-gcc-ranlib.exe")
-set(CMAKE_LINKER "F:/Espressif/Tool/tools/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-ld.exe")
+set(CMAKE_AR "F:/Espressif/Tool/tools/riscv32-esp-elf/esp-2022r1-11.2.0/riscv32-esp-elf/bin/riscv32-esp-elf-ar.exe")
+set(CMAKE_CXX_COMPILER_AR "F:/Espressif/Tool/tools/riscv32-esp-elf/esp-2022r1-11.2.0/riscv32-esp-elf/bin/riscv32-esp-elf-gcc-ar.exe")
+set(CMAKE_RANLIB "F:/Espressif/Tool/tools/riscv32-esp-elf/esp-2022r1-11.2.0/riscv32-esp-elf/bin/riscv32-esp-elf-ranlib.exe")
+set(CMAKE_CXX_COMPILER_RANLIB "F:/Espressif/Tool/tools/riscv32-esp-elf/esp-2022r1-11.2.0/riscv32-esp-elf/bin/riscv32-esp-elf-gcc-ranlib.exe")
+set(CMAKE_LINKER "F:/Espressif/Tool/tools/riscv32-esp-elf/esp-2022r1-11.2.0/riscv32-esp-elf/bin/riscv32-esp-elf-ld.exe")
 set(CMAKE_MT "")
 set(CMAKE_COMPILER_IS_GNUCXX 1)
 set(CMAKE_CXX_COMPILER_LOADED 1)
@@ -77,7 +77,7 @@ endif()
 
 
 
-set(CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES "F:/Espressif/Tool/tools/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/xtensa-esp32-elf/include/c++/11.2.0;F:/Espressif/Tool/tools/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/xtensa-esp32-elf/include/c++/11.2.0/xtensa-esp32-elf;F:/Espressif/Tool/tools/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/xtensa-esp32-elf/include/c++/11.2.0/backward;F:/Espressif/Tool/tools/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/lib/gcc/xtensa-esp32-elf/11.2.0/include;F:/Espressif/Tool/tools/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/lib/gcc/xtensa-esp32-elf/11.2.0/include-fixed;F:/Espressif/Tool/tools/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/xtensa-esp32-elf/sys-include;F:/Espressif/Tool/tools/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/xtensa-esp32-elf/include")
-set(CMAKE_CXX_IMPLICIT_LINK_LIBRARIES "stdc++;m;gcc;c;nosys;c;gcc")
-set(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "F:/Espressif/Tool/tools/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/lib/gcc/xtensa-esp32-elf/11.2.0;F:/Espressif/Tool/tools/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/lib/gcc;F:/Espressif/Tool/tools/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/xtensa-esp32-elf/lib")
+set(CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES "F:/Espressif/Tool/tools/riscv32-esp-elf/esp-2022r1-11.2.0/riscv32-esp-elf/riscv32-esp-elf/include/c++/11.2.0;F:/Espressif/Tool/tools/riscv32-esp-elf/esp-2022r1-11.2.0/riscv32-esp-elf/riscv32-esp-elf/include/c++/11.2.0/riscv32-esp-elf/rv32imc/ilp32;F:/Espressif/Tool/tools/riscv32-esp-elf/esp-2022r1-11.2.0/riscv32-esp-elf/riscv32-esp-elf/include/c++/11.2.0/backward;F:/Espressif/Tool/tools/riscv32-esp-elf/esp-2022r1-11.2.0/riscv32-esp-elf/lib/gcc/riscv32-esp-elf/11.2.0/include;F:/Espressif/Tool/tools/riscv32-esp-elf/esp-2022r1-11.2.0/riscv32-esp-elf/lib/gcc/riscv32-esp-elf/11.2.0/include-fixed;F:/Espressif/Tool/tools/riscv32-esp-elf/esp-2022r1-11.2.0/riscv32-esp-elf/riscv32-esp-elf/sys-include;F:/Espressif/Tool/tools/riscv32-esp-elf/esp-2022r1-11.2.0/riscv32-esp-elf/riscv32-esp-elf/include")
+set(CMAKE_CXX_IMPLICIT_LINK_LIBRARIES "stdc++;m;gcc;c;nosys;c;gcc;gcc;c;nosys")
+set(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "F:/Espressif/Tool/tools/riscv32-esp-elf/esp-2022r1-11.2.0/riscv32-esp-elf/lib/gcc/riscv32-esp-elf/11.2.0/rv32imc/ilp32;F:/Espressif/Tool/tools/riscv32-esp-elf/esp-2022r1-11.2.0/riscv32-esp-elf/riscv32-esp-elf/lib/rv32imc/ilp32;F:/Espressif/Tool/tools/riscv32-esp-elf/esp-2022r1-11.2.0/riscv32-esp-elf/lib/gcc/riscv32-esp-elf/11.2.0;F:/Espressif/Tool/tools/riscv32-esp-elf/esp-2022r1-11.2.0/riscv32-esp-elf/lib/gcc;F:/Espressif/Tool/tools/riscv32-esp-elf/esp-2022r1-11.2.0/riscv32-esp-elf/riscv32-esp-elf/lib")
 set(CMAKE_CXX_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "")

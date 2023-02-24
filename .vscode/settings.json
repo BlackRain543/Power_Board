@@ -1,3 +1,17 @@
 {
-  "C_Cpp.intelliSenseEngine": "Tag Parser"
+  "C_Cpp.intelliSenseEngine": "Tag Parser",
+  "idf.adapterTargetName": "esp32c3",
+  "files.associations": {
+    "adc.h": "c",
+    "esp_log.h": "c",
+    "gpio.h": "c",
+    "*.tcc": "c",
+    "fstream": "c",
+    "esp_netif.h": "c"
+  },
+  "idf.flashType": "UART",
+  "idf.portWin": "COM10",
+  "idf.openOcdConfigs": [
+    "board/esp32c3-builtin.cfg"
+  ]
 }
