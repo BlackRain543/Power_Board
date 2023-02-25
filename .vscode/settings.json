@@ -7,7 +7,15 @@
     "gpio.h": "c",
     "*.tcc": "c",
     "fstream": "c",
-    "esp_netif.h": "c"
+    "esp_netif.h": "c",
+    "netdb.h": "c",
+    "esp_mac.h": "c",
+    "complex": "c",
+    "common_inc.h": "c",
+    "task.h": "c",
+    "freertos.h": "c",
+    "string.h": "c",
+    "stdlib.h": "c"
   },
   "idf.flashType": "UART",
   "idf.portWin": "COM10",
