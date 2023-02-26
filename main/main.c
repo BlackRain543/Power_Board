@@ -4,20 +4,6 @@
 
 char udp_cmd = 0;
 
-uint16_t Startup[3][2] = 
-{
-    {M1, 80},
-    {M6, 80},
-    {M3, 80},
-};
-
-/*连接成功音*/
-uint16_t Connect[3][2]=
-{
-    {H1, 80},
-    {H2, 80},
-    {H3, 80},
-};
 
 void app_main(void)
 {
@@ -28,7 +14,8 @@ void app_main(void)
 
 
     while (1)
-    {   
+    {      
+        
         switch(udp_cmd)
         {
             case 'a':
@@ -61,6 +48,7 @@ void app_main(void)
             default:
                 break;
         }
+
         status = !status;
         gpio_set_level(LED1_PIN,status);
         vTaskDelay(1000);

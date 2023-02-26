@@ -89,14 +89,9 @@ bool buzzer_PlayMusic(const char* name){
     {
         if (strcmp(name, MusicList[i].name) == 0)
         {
-            // for(uint8_t j = 0; j < MusicList[i].length ; j++){
-            //     buzzer_tone(MusicList[i].mc[j].Freq,  MusicList[i].mc[j].Time);
-            //     vTaskDelay(MusicList[i].mc[j].Time + 10);
-            // }
-
             Cur_Music    =  MusicList[i].mc;
             Music_Length =  MusicList[i].length;
-            // ESP_LOGI("music","length:%d",Music_Length);
+
             retval = true;
             break;
         }

@@ -10,10 +10,10 @@ TaskHandle_t led_task_handle;
 
 void freertos_tasks_create(void)
 {
-    xTaskCreate(udp_server_task,    "udp_server_task"       , 4096, (void*)AF_INET, 3, &udp_server_task_handle);
-    xTaskCreate(adc_getvalue_task,  "adc_task"              , 2048, NULL, 1, &adc_task_handle);
-    xTaskCreate(buzzer_task,        "buzzer_task"           , 1024, NULL, 2, &buzzer_task_handle);
-    xTaskCreate(music_task,         "music_task"            , 1024, NULL, 2, &music_task_handle);
+    xTaskCreate(udp_server_task,    "udp_server_task"       , 4096, (void*)AF_INET, 3,  &udp_server_task_handle);
+    xTaskCreate(adc_getvalue_task,  "adc_task"              , 768,  NULL, 1,            &adc_task_handle);
+    xTaskCreate(buzzer_task,        "buzzer_task"           , 512,  NULL, 2,            &buzzer_task_handle);
+    xTaskCreate(music_task,         "music_task"            , 512,  NULL, 2,            &music_task_handle);
 }
 
 /**
@@ -208,7 +208,6 @@ void udp_server_task(void *pvParameters)
                 ESP_LOGI(TAG_UDP, "%s", rx_buffer);
 
                 udp_cmd = rx_buffer[0];
-
 
                 int err = sendto(sock, rx_buffer, len, 0, (struct sockaddr *)&source_addr, sizeof(source_addr));
                 if (err < 0) 

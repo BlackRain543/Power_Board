@@ -11,13 +11,12 @@
 #include <string.h>
 #include <sys/param.h>
 
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
 
 #include "nvs_flash.h"
 
 #include "esp_system.h"
 #include "esp_event.h"
+#include "esp_chip_info.h"
 #include "esp_log.h"
 #include "esp_wifi.h"
 #include "esp_netif.h"
@@ -52,6 +51,7 @@ typedef enum{
 #define  TAG_WIFI_STA       "Wifi_STA"
 #define  TAG_WIFI_AP        "Wifi_AP"
 #define  TAG_UDP            "UDP"
+#define  TAG_SCAN           "SCAN"
 #define  TAG_GENERAL        "ESP32_C3"
 
 /* GPIO */
@@ -125,11 +125,14 @@ typedef enum{
 
 #define ESP_AP_CONFIG_IPV4      192.168.4.1
 
-/* WIFI STA*/
+/* WIFI STA */
 #define ESP_STA_WIFI_SSID       "CLEAR-LAB"
 #define ESP_STA_WIFI_PASS       "RobotRobot"
 #define ESP_STA_WIFI_CHANNEL    2
 #define ESP_STA_MAXIMUM_RETRY   10
+
+/* WIFI SCAN */
+#define ESP_SCAN_LIST_SIZE      10
 
 #ifdef __cplusplus
 }

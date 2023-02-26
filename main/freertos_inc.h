@@ -5,6 +5,9 @@
 extern "C" {
 #endif
 
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+
 #include "common_inc.h"
 #include "hal.h"
 
