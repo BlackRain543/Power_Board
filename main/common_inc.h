@@ -21,6 +21,7 @@
 #include "esp_wifi.h"
 #include "esp_netif.h"
 #include "esp_mac.h"
+#include "esp_smartconfig.h"
 
 #include "lwip/err.h"
 #include "lwip/sockets.h"
@@ -50,8 +51,9 @@ typedef enum{
 /* TAG */
 #define  TAG_WIFI_STA       "Wifi_STA"
 #define  TAG_WIFI_AP        "Wifi_AP"
-#define  TAG_UDP            "UDP"
-#define  TAG_SCAN           "SCAN"
+#define  TAG_UDP            "Wifi_UDP"
+#define  TAG_SCAN           "Wifi_SCAN"
+#define  TAG_SMARTCONFIG    "Wifi_SMARTCONFIG"
 #define  TAG_GENERAL        "ESP32_C3"
 
 /* GPIO */
@@ -133,6 +135,10 @@ typedef enum{
 
 /* WIFI SCAN */
 #define ESP_SCAN_LIST_SIZE      10
+
+#define WIFI_CONNECTED_BIT  BIT0
+#define WIFI_FAIL_BIT       BIT1
+#define ESPTOUCH_DONE_BIT   BIT2
 
 #ifdef __cplusplus
 }

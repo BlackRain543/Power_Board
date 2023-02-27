@@ -7,6 +7,7 @@ extern "C" {
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include "freertos/event_groups.h"
 
 #include "common_inc.h"
 #include "hal.h"
@@ -15,6 +16,7 @@ extern "C" {
 /*--------------------------------- System Tasks -------------------------------------*/
 void freertos_tasks_create(void);
 
+void smartconfig_task(void *pvParameters);
 void adc_getvalue_task(void *pvParameters);
 void udp_server_task(void *pvParameters);
 void buzzer_task(void* argument);

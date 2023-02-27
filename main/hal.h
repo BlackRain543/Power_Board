@@ -7,6 +7,7 @@ extern "C" {
 
 #include "common_inc.h"
 #include "TonePlayer/MusicCode.h"
+#include "freertos_inc.h"
 
 /* Init */
 void HAL_Init(void);
@@ -30,12 +31,12 @@ void print_cipher_type(int pairwise_cipher, int group_cipher);
 
 /* Wifi */
 void wifi_init(WifiMode wifi_mode);
+void wifi_scan(void);
+void wifi_smartconfig(void);
 
 static void wifi_sta_event_handler(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data);
 static void wifi_ap_event_handler (void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data);
-
-void wifi_scan(void);
-
+static void wifi_smartconfig_event_handler( void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data);
 
 #ifdef __cplusplus
 }

@@ -1,8 +1,10 @@
 #include "freertos_inc.h"
 
 extern char udp_cmd;
+extern EventGroupHandle_t s_wifi_event_group;
 
 TaskHandle_t udp_server_task_handle;	
+TaskHandle_t smartconfig_task_handle;	
 TaskHandle_t adc_task_handle;	
 TaskHandle_t buzzer_task_handle;
 TaskHandle_t music_task_handle;	
@@ -10,10 +12,33 @@ TaskHandle_t led_task_handle;
 
 void freertos_tasks_create(void)
 {
-    xTaskCreate(udp_server_task,    "udp_server_task"       , 4096, (void*)AF_INET, 3,  &udp_server_task_handle);
+    xTaskCreate(udp_server_task,    "udp_server_task"       , 4096, (void*)AF_INET, 2,  &udp_server_task_handle);
     xTaskCreate(adc_getvalue_task,  "adc_task"              , 768,  NULL, 1,            &adc_task_handle);
     xTaskCreate(buzzer_task,        "buzzer_task"           , 512,  NULL, 2,            &buzzer_task_handle);
     xTaskCreate(music_task,         "music_task"            , 512,  NULL, 2,            &music_task_handle);
+}
+
+/**
+ * @brief Wifi Smartconfig Task
+ */
+void smartconfig_task(void *pvParameters)
+{
+    EventBits_t uxBits;
+    ESP_ERROR_CHECK( esp_smartconfig_set_type(SC_TYPE_ESPTOUCH) );
+    smartconfig_start_config_t cfg = SMARTCONFIG_START_CONFIG_DEFAULT();
+    ESP_ERROR_CHECK( esp_smartconfig_start(&cfg) );
+
+    while (1) {
+        uxBits = xEventGroupWaitBits(s_wifi_event_group, WIFI_CONNECTED_BIT | ESPTOUCH_DONE_BIT, true, false, portMAX_DELAY);
+        if(uxBits & WIFI_CONNECTED_BIT) {
+            ESP_LOGI(TAG_SMARTCONFIG, "WiFi Connected to ap");
+        }
+        if(uxBits & ESPTOUCH_DONE_BIT) {
+            ESP_LOGI(TAG_SMARTCONFIG, "smartconfig over");
+            esp_smartconfig_stop();
+            vTaskDelete(NULL);
+        }
+    }
 }
 
 /**
@@ -92,8 +117,6 @@ void music_task(void *pvParameters)
             buzzer_tone(Cur_Music[current_pos].Freq, Cur_Music[current_pos].Time);
             vTaskDelay(Cur_Music[current_pos].Time + 10);
             current_pos++;
-
-            // ESP_LOGI("pos","current_pos:%d",current_pos);
 
             if(current_pos == Music_Length)
             {

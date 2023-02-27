@@ -7,7 +7,7 @@ void HAL_Init(void){
     adc_init();
     buzzer_init();
 
-    wifi_init(WIFI_STA);
+    // wifi_init(WIFI_STA);
 
 }
 
