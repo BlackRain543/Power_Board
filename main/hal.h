@@ -18,6 +18,7 @@ void adc_init(void);
 void buzzer_init(void);
 
 /* Func */
+void led_blink(uint8_t led_pin, uint8_t blink_num, uint16_t time);
 void buzzer_tone(uint32_t _freq, int32_t _duration);
 bool buzzer_PlayMusic(const char* name);
 void ledcWrite(uint8_t channel, uint32_t duty);

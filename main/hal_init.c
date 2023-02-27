@@ -7,7 +7,7 @@ void HAL_Init(void){
     adc_init();
     buzzer_init();
 
-    // wifi_init(WIFI_STA);
+    wifi_init(WIFI_STA);
 
 }
 
@@ -41,6 +41,13 @@ void gpio_init(void){
 
 	//传入gpio_config_t指针
 	gpio_config(&ioConfig);
+
+    LED1_OFF;
+    LED2_OFF;
+
+    EN_5V_OFF;
+    EN_19V_OFF;
+    EN_VIN_OFF;
 }
 
 /**

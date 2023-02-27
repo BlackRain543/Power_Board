@@ -15,11 +15,12 @@ extern "C" {
 // List of Tasks
 /*--------------------------------- System Tasks -------------------------------------*/
 void freertos_tasks_create(void);
+void all_tasks_memory_info_print(void);
 
 void smartconfig_task(void *pvParameters);
 void adc_getvalue_task(void *pvParameters);
 void udp_server_task(void *pvParameters);
-void buzzer_task(void* argument);
+void buzzer_task(void* pvParameters);
 void music_task(void *pvParameters);
 void led_task(void *pvParameters);
 

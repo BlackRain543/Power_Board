@@ -7,14 +7,10 @@ char udp_cmd = 0;
 void app_main(void)
 {
     HAL_Init();
-    wifi_smartconfig();
+    // wifi_smartconfig();
     freertos_tasks_create();
 
     bool status = 0;
-
-
-
-
 
     while (1)
     {      

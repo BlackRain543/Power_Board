@@ -16,6 +16,16 @@ void freertos_tasks_create(void)
     xTaskCreate(adc_getvalue_task,  "adc_task"              , 768,  NULL, 1,            &adc_task_handle);
     xTaskCreate(buzzer_task,        "buzzer_task"           , 512,  NULL, 2,            &buzzer_task_handle);
     xTaskCreate(music_task,         "music_task"            , 512,  NULL, 2,            &music_task_handle);
+    xTaskCreate(led_task,           "led_task"              , 512,  NULL, 3,            &led_task_handle);
+}
+
+void all_tasks_memory_info_print(void){
+    task_memory_info_print(udp_server_task_handle,  4096);
+    // task_memory_info_print(smartconfig_task_handle,4096);
+    task_memory_info_print(adc_task_handle,         768);
+    task_memory_info_print(buzzer_task_handle,      512);
+    task_memory_info_print(music_task_handle,       512);
+    task_memory_info_print(led_task_handle,         512);
 }
 
 /**
@@ -136,9 +146,76 @@ void music_task(void *pvParameters)
  */
 void led_task(void *pvParameters){
 
+    static int16_t led_status = 0;
+    static uint8_t led_blink_num = 0;
+    static uint16_t cnt = 0;
+
     for (;;)
-    {
-        
+    {   
+        switch(led_status){
+            case 0:
+                led_blink_num = 1;
+                // if(cnt == 0)
+                //     LED1_ON;
+                // if(cnt == 100)
+                //     LED1_OFF;
+                // if(cnt >= 1500)
+                //     cnt = 0xFFFF;
+                break;
+
+            case 1:
+                led_blink_num = 2;
+                // if(cnt == 0)
+                //     LED1_ON;
+                // if(cnt == 100)
+                //     LED1_OFF;
+                // if(cnt == 200)
+                //     LED1_ON;
+                // if(cnt == 300)
+                //     LED1_OFF;
+                // if(cnt >= 1500)
+                //     cnt = 0xFFFF;
+                break;
+
+            case 2:
+                led_blink_num = 3;
+                // if(cnt == 0)
+                //     LED1_ON;
+                // if(cnt == 100)
+                //     LED1_OFF;
+                // if(cnt == 200)
+                //     LED1_ON;
+                // if(cnt == 300)
+                //     LED1_OFF;
+                // if(cnt == 400)
+                //     LED1_ON;
+                // if(cnt == 500)
+                //     LED1_OFF;
+                // if(cnt >= 1500)
+                //     cnt = 0xFFFF;
+                break;
+
+            case 3:
+                LED2_ON;
+                break;
+            default:
+                LED1_OFF;   LED2_OFF;
+                break;
+        }
+
+        /* blink control */
+        if(cnt%100 == 0 && (uint8_t)(cnt/100) < led_blink_num*2)
+        {
+            SET_LED1((uint8_t)(cnt/100)%2 + 1);
+        }
+        if(cnt >= 1500)
+        {
+            cnt = 0xFFFF;
+            led_blink_num = 0;
+        }          
+
+        cnt++;
+        vTaskDelay(1);
     }
 }
 

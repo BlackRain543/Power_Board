@@ -61,8 +61,23 @@ typedef enum{
 #define EN_19V_PIN          GPIO_NUM_6
 #define EN_VIN_PIN          GPIO_NUM_7
 
+#define EN_5V_ON            gpio_set_level(EN_5V_PIN,0)
+#define EN_5V_OFF           gpio_set_level(EN_5V_PIN,1)
+#define EN_19V_ON           gpio_set_level(EN_19V_PIN,0)
+#define EN_19V_OFF          gpio_set_level(EN_19V_PIN,1)
+#define EN_VIN_ON           gpio_set_level(EN_VIN_PIN,0)
+#define EN_VIN_OFF          gpio_set_level(EN_VIN_PIN,1)
+
 #define LED1_PIN            GPIO_NUM_20
 #define LED2_PIN            GPIO_NUM_21
+
+#define SET_LED1(m)         gpio_set_level(LED1_PIN,m)
+#define SET_LED2(m)         gpio_set_level(LED2_PIN,m)
+
+#define LED1_ON             gpio_set_level(LED1_PIN,1)
+#define LED1_OFF            gpio_set_level(LED1_PIN,0)
+#define LED2_ON             gpio_set_level(LED2_PIN,1)
+#define LED2_OFF            gpio_set_level(LED2_PIN,0)
 
 #define BUZZER_PIN          GPIO_NUM_10
 

@@ -5,6 +5,18 @@ uint32_t freq = 0;
 uint8_t  channels_resolution[LEDC_CHANNELS] = {0};
 
 /**
+ * @brief led blink
+ */
+void led_blink(uint8_t led_pin, uint8_t blink_num, uint16_t time){
+    for(uint8_t i = 0;i < blink_num;i++){
+        gpio_set_level(led_pin, 1 );
+        vTaskDelay(time);
+        gpio_set_level(led_pin, 0 );
+        vTaskDelay(time);
+    }
+}
+
+/**
  * @brief buzzer play tone
  */
 void buzzer_tone(uint32_t _freq, int32_t _duration){

@@ -13,14 +13,17 @@ void esp_chip_info_print(void){
 }
 
 /**
- * Get Task Size
+ * @brief Get Single Task Size
 */
 void task_memory_info_print(TaskHandle_t taskHandle,int taskMem){
-  int waterMark = uxTaskGetStackHighWaterMark(taskHandle);
+    int waterMark = uxTaskGetStackHighWaterMark(taskHandle);
 
-  ESP_LOGI(TAG_GENERAL,"Task Memory: %d B",taskMem - waterMark);
+    ESP_LOGI(TAG_GENERAL,"Task Memory: %d B",taskMem - waterMark);
 }
 
+/**
+ * @brief Print auth mode -- [wifi scan]
+*/
 void print_auth_mode(int authmode)
 {
     switch (authmode) {
@@ -57,6 +60,9 @@ void print_auth_mode(int authmode)
     }
 }
 
+/**
+ * @brief Print cipher type -- [wifi scan]
+*/
 void print_cipher_type(int pairwise_cipher, int group_cipher)
 {
     switch (pairwise_cipher) {
