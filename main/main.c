@@ -11,7 +11,8 @@ void app_main(void)
     freertos_tasks_create();
 
     bool status = 0;
-
+    
+    all_tasks_memory_info_print();
     while (1)
     {      
         
@@ -48,10 +49,10 @@ void app_main(void)
         //         break;
         // }
 
-        status = !status;
-        gpio_set_level(LED1_PIN,status);
-        vTaskDelay(1000);
-                
+        // status = !status;
+        // gpio_set_level(LED1_PIN,status);
+        // vTaskDelay(1000);
+        vTaskDelay(1); 
     }
 }
 

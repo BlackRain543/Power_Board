@@ -141,78 +141,56 @@ void music_task(void *pvParameters)
     }
 }
 
+extern char udp_cmd;
 /**
  * @brief Led Task
  */
 void led_task(void *pvParameters){
 
-    static int16_t led_status = 0;
-    static uint8_t led_blink_num = 0;
+    static int16_t  led_status = 0;
     static uint16_t cnt = 0;
+    static uint16_t period = 1500;
 
     for (;;)
     {   
+        led_status = udp_cmd;
+
         switch(led_status){
-            case 0:
-                led_blink_num = 1;
-                // if(cnt == 0)
-                //     LED1_ON;
-                // if(cnt == 100)
-                //     LED1_OFF;
-                // if(cnt >= 1500)
-                //     cnt = 0xFFFF;
+            case '0':   /* blink 1 times */
+                if(cnt == 0)        LED1_ON;
+                if(cnt == 100)      LED1_OFF;
+                if(cnt >= period)   cnt = 0xFFFF;
+                break;
+            
+            case '1':   /* blink 2 times */
+                if(cnt == 0)        LED1_ON;
+                if(cnt == 100)      LED1_OFF;
+                if(cnt == 200)      LED1_ON;
+                if(cnt == 300)      LED1_OFF;
+                if(cnt >= period)   cnt = 0xFFFF;
                 break;
 
-            case 1:
-                led_blink_num = 2;
-                // if(cnt == 0)
-                //     LED1_ON;
-                // if(cnt == 100)
-                //     LED1_OFF;
-                // if(cnt == 200)
-                //     LED1_ON;
-                // if(cnt == 300)
-                //     LED1_OFF;
-                // if(cnt >= 1500)
-                //     cnt = 0xFFFF;
+            case '2':   /* blink 3 times */
+                if(cnt == 0)        LED1_ON;
+                if(cnt == 100)      LED1_OFF;
+                if(cnt == 200)      LED1_ON;
+                if(cnt == 300)      LED1_OFF;
+                if(cnt == 400)      LED1_ON;
+                if(cnt == 500)      LED1_OFF;
+                if(cnt >= period)   cnt = 0xFFFF;
                 break;
 
-            case 2:
-                led_blink_num = 3;
-                // if(cnt == 0)
-                //     LED1_ON;
-                // if(cnt == 100)
-                //     LED1_OFF;
-                // if(cnt == 200)
-                //     LED1_ON;
-                // if(cnt == 300)
-                //     LED1_OFF;
-                // if(cnt == 400)
-                //     LED1_ON;
-                // if(cnt == 500)
-                //     LED1_OFF;
-                // if(cnt >= 1500)
-                //     cnt = 0xFFFF;
+            case '3':
+                if(cnt == 0)        LED1_ON;
+                if(cnt == period/2) LED1_OFF;
+                if(cnt >= period)   cnt = 0xFFFF;
                 break;
 
-            case 3:
-                LED2_ON;
-                break;
             default:
-                LED1_OFF;   LED2_OFF;
+                LED1_OFF;   
+                LED2_OFF;
                 break;
-        }
-
-        /* blink control */
-        if(cnt%100 == 0 && (uint8_t)(cnt/100) < led_blink_num*2)
-        {
-            SET_LED1((uint8_t)(cnt/100)%2 + 1);
-        }
-        if(cnt >= 1500)
-        {
-            cnt = 0xFFFF;
-            led_blink_num = 0;
-        }          
+        }   
 
         cnt++;
         vTaskDelay(1);
@@ -224,8 +202,8 @@ void led_task(void *pvParameters){
  */
 void udp_server_task(void *pvParameters)
 {
-    char    rx_buffer[128]  = {};
-    char    addr_str[128]   = {};
+    char    rx_buffer[64]  = {};
+    char    addr_str[64]   = {};
     int     addr_family     = (int)pvParameters;
     int     ip_protocol     = 0;
     struct  sockaddr_in6 dest_addr;
