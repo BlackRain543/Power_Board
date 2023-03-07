@@ -3,6 +3,7 @@
 int32_t  duration = 0;
 uint32_t freq = 0;
 uint8_t  channels_resolution[LEDC_CHANNELS] = {0};
+bool     is_buzzer_enable = BUZZER_EN;
 
 /**
  * @brief led blink
@@ -21,6 +22,9 @@ void led_blink(uint8_t led_pin, uint8_t blink_num, uint16_t time){
  * @brief buzzer play tone
  */
 void buzzer_tone(uint32_t _freq, int32_t _duration){
+    if (!is_buzzer_enable)
+        return;
+
     if (_duration == 0)
     {
         ledcWriteTone(LEDC_CHANNEL, _freq);
@@ -30,6 +34,30 @@ void buzzer_tone(uint32_t _freq, int32_t _duration){
         freq        = _freq;
         duration    = _duration;
     }
+}
+
+/**
+ * @brief Buzzer Play Music
+ */
+MusicNode_t* Cur_Music;
+uint8_t      Music_Length = 0;
+
+bool buzzer_PlayMusic(const char* name){
+    bool retval = false;
+
+    for (uint8_t i = 0; i < sizeof(MusicList) / sizeof(MusicList[0]); i++)
+    {
+        if (strcmp(name, MusicList[i].name) == 0)
+        {
+            Cur_Music    =  MusicList[i].mc;
+            Music_Length =  MusicList[i].length;
+
+            retval = true;
+            break;
+        }
+    }
+
+    return retval;
 }
 
 /**
@@ -89,26 +117,3 @@ uint32_t ledcWriteTone(uint8_t channel, uint32_t freq)
     return res_freq;
 }
 
-/**
- * @brief Buzzer Play Music
- */
-MusicNode_t* Cur_Music;
-uint8_t      Music_Length = 0;
-
-bool buzzer_PlayMusic(const char* name){
-    bool retval = false;
-
-    for (uint8_t i = 0; i < sizeof(MusicList) / sizeof(MusicList[0]); i++)
-    {
-        if (strcmp(name, MusicList[i].name) == 0)
-        {
-            Cur_Music    =  MusicList[i].mc;
-            Music_Length =  MusicList[i].length;
-
-            retval = true;
-            break;
-        }
-    }
-
-    return retval;
-}

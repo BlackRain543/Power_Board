@@ -80,6 +80,7 @@ typedef enum{
 #define LED2_OFF            gpio_set_level(LED2_PIN,0)
 
 #define BUZZER_PIN          GPIO_NUM_10
+#define BUZZER_EN           1
 
 #define ADC_CH0_VIN_PIN     GPIO_NUM_0
 #define ADC_CH1_19V_PIN     GPIO_NUM_1
@@ -143,8 +144,10 @@ typedef enum{
 #define ESP_AP_CONFIG_IPV4      192.168.4.1
 
 /* WIFI STA */
-#define ESP_STA_WIFI_SSID       "CLEAR-LAB"
-#define ESP_STA_WIFI_PASS       "RobotRobot"
+// #define ESP_STA_WIFI_SSID       "CLEAR-LAB"
+// #define ESP_STA_WIFI_PASS       "RobotRobot"
+#define ESP_STA_WIFI_SSID       "Xiaomi_4EDC"
+#define ESP_STA_WIFI_PASS       "123456+++abc"
 #define ESP_STA_WIFI_CHANNEL    2
 #define ESP_STA_MAXIMUM_RETRY   10
 

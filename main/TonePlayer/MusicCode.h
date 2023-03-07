@@ -109,7 +109,12 @@ MUSIC_DEF(NoOperationWarning)
     {4000, 40},
 };
 
-
+/*操作提示音*/
+MUSIC_DEF(Operation) 
+{
+    {500, 60},
+    {700, 60},
+};
 
 /*提示音地址储存列表*/
 static const MusicList_t MusicList[] =
@@ -125,4 +130,5 @@ static const MusicList_t MusicList[] =
     ADD_MUSIC(DeviceInsert),
     ADD_MUSIC(DevicePullout),
     ADD_MUSIC(NoOperationWarning),
+    ADD_MUSIC(Operation),
 };

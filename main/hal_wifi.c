@@ -171,6 +171,8 @@ static void wifi_sta_event_handler( void* arg, esp_event_base_t event_base,
 
         s_retry_num = 0;
         xEventGroupSetBits(s_wifi_event_group, WIFI_CONNECTED_BIT);
+
+        buzzer_PlayMusic("Connect");
     }
 
     // Try to Connect
@@ -186,6 +188,8 @@ static void wifi_sta_event_handler( void* arg, esp_event_base_t event_base,
         {
             xEventGroupSetBits(s_wifi_event_group, WIFI_FAIL_BIT);
             ESP_LOGI(TAG_WIFI_STA,"connect to the AP fail");
+
+            buzzer_PlayMusic("Error");
         }
     }
 }
@@ -205,6 +209,8 @@ static void wifi_ap_event_handler( void* arg, esp_event_base_t event_base,
         wifi_event_ap_staconnected_t* event = (wifi_event_ap_staconnected_t*) event_data;
         ESP_LOGI(TAG_WIFI_AP, "station "MACSTR" join, AID=%d",
                  MAC2STR(event->mac), event->aid);
+
+        buzzer_PlayMusic("DeviceInsert");
     } 
 
     if (event_id == WIFI_EVENT_AP_STADISCONNECTED) 
@@ -212,6 +218,8 @@ static void wifi_ap_event_handler( void* arg, esp_event_base_t event_base,
         wifi_event_ap_stadisconnected_t* event = (wifi_event_ap_stadisconnected_t*) event_data;
         ESP_LOGI(TAG_WIFI_AP, "station "MACSTR" leave, AID=%d",
                  MAC2STR(event->mac), event->aid);
+        
+        buzzer_PlayMusic("DevicePullout");
     }
 
 }
@@ -239,6 +247,7 @@ static void wifi_smartconfig_event_handler( void* arg, esp_event_base_t event_ba
     if(event_base  == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) 
     {
         xEventGroupSetBits(s_wifi_event_group, WIFI_CONNECTED_BIT);
+        buzzer_PlayMusic("Connect");
     }
 
     // Try to Connect

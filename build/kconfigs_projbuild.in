@@ -1,0 +1,5 @@
+source "F:/espidf/vscode-esp/esp-idf-v5.0/components/bootloader/Kconfig.projbuild"
+source "F:/espidf/vscode-esp/esp-idf-v5.0/components/esp_app_format/Kconfig.projbuild"
+source "F:/espidf/vscode-esp/esp-idf-v5.0/components/esp_rom/Kconfig.projbuild"
+source "F:/espidf/vscode-esp/esp-idf-v5.0/components/esptool_py/Kconfig.projbuild"
+source "F:/espidf/vscode-esp/esp-idf-v5.0/components/partition_table/Kconfig.projbuild"

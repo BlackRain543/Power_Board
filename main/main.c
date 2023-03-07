@@ -2,28 +2,32 @@
 #include "freertos_inc.h"
 #include "hal.h"
 
-char udp_cmd = 0;
+char udp_cmd = '0';
 
 void app_main(void)
 {
     HAL_Init();
+    
+    wifi_init(WIFI_STA);
     // wifi_smartconfig();
     freertos_tasks_create();
 
-    bool status = 0;
-    
     all_tasks_memory_info_print();
+
+    // buzzer_PlayMusic("Startup");
+    
+    // buzzer_PlayMusic("DeviceInsert");
+
     while (1)
     {      
-        
-        // switch(udp_cmd)
-        // {
-        //     case 'a':
-        //         buzzer_PlayMusic("Startup");
-        //         break;
-        //     case 'b':
-        //         buzzer_PlayMusic("Shutdown");
-        //         break;
+        switch(udp_cmd)
+        {
+            case 'a':
+                buzzer_PlayMusic("DeviceInsert");
+                break;
+            // case 'b':
+            //     buzzer_PlayMusic("Test");
+            //     break;
         //     case 'c':
         //         buzzer_PlayMusic("Error");
         //         break;
@@ -45,14 +49,13 @@ void app_main(void)
         //     case 'i':
         //         buzzer_PlayMusic("NoOperationWarning");
         //         break; 
-        //     default:
-        //         break;
-        // }
+            default:
+                break;
+        }
 
         // status = !status;
-        // gpio_set_level(LED1_PIN,status);
-        // vTaskDelay(1000);
-        vTaskDelay(1); 
+
+        vTaskDelay(2000); 
     }
 }
 

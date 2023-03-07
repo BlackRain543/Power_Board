@@ -16,7 +16,7 @@ void freertos_tasks_create(void)
     xTaskCreate(adc_getvalue_task,  "adc_task"              , 768,  NULL, 1,            &adc_task_handle);
     xTaskCreate(buzzer_task,        "buzzer_task"           , 512,  NULL, 2,            &buzzer_task_handle);
     xTaskCreate(music_task,         "music_task"            , 512,  NULL, 2,            &music_task_handle);
-    xTaskCreate(led_task,           "led_task"              , 512,  NULL, 3,            &led_task_handle);
+    xTaskCreate(led_task,           "led_task"              , 512,  NULL, 5,            &led_task_handle);
 }
 
 void all_tasks_memory_info_print(void){
@@ -125,7 +125,7 @@ void music_task(void *pvParameters)
         while(current_pos < Music_Length){
 
             buzzer_tone(Cur_Music[current_pos].Freq, Cur_Music[current_pos].Time);
-            vTaskDelay(Cur_Music[current_pos].Time + 10);
+            vTaskDelay(Cur_Music[current_pos].Time + 11);
             current_pos++;
 
             if(current_pos == Music_Length)
@@ -202,8 +202,8 @@ void led_task(void *pvParameters){
  */
 void udp_server_task(void *pvParameters)
 {
-    char    rx_buffer[64]  = {};
-    char    addr_str[64]   = {};
+    char    rx_buffer[64]   = {};
+    char    addr_str[64]    = {};
     int     addr_family     = (int)pvParameters;
     int     ip_protocol     = 0;
     struct  sockaddr_in6 dest_addr;
@@ -286,6 +286,7 @@ void udp_server_task(void *pvParameters)
                 ESP_LOGI(TAG_UDP, "%s", rx_buffer);
 
                 udp_cmd = rx_buffer[0];
+                buzzer_PlayMusic("Operation");
 
                 int err = sendto(sock, rx_buffer, len, 0, (struct sockaddr *)&source_addr, sizeof(source_addr));
                 if (err < 0) 
